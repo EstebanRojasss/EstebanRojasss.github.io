@@ -22,7 +22,7 @@
     --red:       #ff3c5a;
     --red-dim:   #7a1c2e;
     --text:      #c8c8c8;
-    --text-dim:  #5a5a5a;
+    --text-dim:  #7a7a7a;
     --text-muted:#3a3a3a;
     --mono:      'JetBrains Mono', monospace;
   }
@@ -62,7 +62,6 @@
     pointer-events: none;
     z-index: 9998;
   }
-
   .topbar {
     position: sticky;
     top: 0;
@@ -510,6 +509,212 @@
     100% { clip-path: inset(95% 0 0 0); transform: translate(0, 0); }
   }
 
+  .timeline {
+    position: relative;
+    padding-left: 1.8rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--green-dim), transparent);
+  }
+
+  .tl-entry {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .tl-entry:last-child { margin-bottom: 0; }
+
+  .tl-entry::before {
+    content: '';
+    position: absolute;
+    left: -1.8rem;
+    top: 6px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
+    transform: translateX(-3px);
+  }
+
+  .tl-year {
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .tl-year-range {
+    color: var(--text-dim);
+    font-size: 10px;
+  }
+
+  .tl-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tl-items li {
+    font-size: 12px;
+    color: var(--text);
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .tl-items li::before {
+    content: '–';
+    color: var(--green-dim);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+  }
+
+  .stat-cell {
+    background: var(--bg-card);
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .stat-key {
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .stat-val {
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 500;
+  }
+
+  .future-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .future-grid { grid-template-columns: 1fr; }
+  }
+
+  .future-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0.85;
+    transition: opacity 0.2s, border-color 0.2s;
+  }
+
+  .future-card:hover {
+    opacity: 1;
+    border-color: var(--border-hl);
+  }
+
+  .future-topbar {
+    background: #121212;
+    border-bottom: 1px solid var(--border);
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+  }
+
+  .future-id { color: var(--text-dim); letter-spacing: 0.05em; }
+
+  .status-pill {
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  .status-dev {
+    background: rgba(232,169,107,0.12);
+    color: #e8a96b;
+    border: 1px solid rgba(232,169,107,0.3);
+  }
+
+  .status-plan {
+    background: rgba(95,138,255,0.1);
+    color: #5f8aff;
+    border: 1px solid rgba(95,138,255,0.25);
+  }
+
+  .future-body { padding: 1rem 1.1rem 1.2rem; }
+
+  .future-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d0d0d0;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .future-desc {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  .product-desc{
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .cv-row {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .btn-cv {
+    background: transparent;
+    color: var(--text-dim);
+    border-color: var(--border-hl);
+    width: 100%;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+
+  .btn-cv:hover {
+    color: var(--green);
+    border-color: var(--green-dim);
+    background: var(--green-glow);
+  }
+
   .glitch-wrap { position: relative; display: inline-block; }
 
   .glitch-wrap::before,
@@ -543,8 +748,9 @@
     <nav>
       <ul class="topbar-nav">
         <li><a href="#hero">./inicio</a></li>
-        <li><a href="#skills">./skills</a></li>
+        <li><a href="#trayectoria">./trayectoria</a></li>
         <li><a href="#projects">./proyectos</a></li>
+        <li><a href="#skills">./stack</a></li>
         <li><a href="#contact">./contacto</a></li>
       </ul>
     </nav>
@@ -573,9 +779,11 @@
   <span class="t-key">"role"</span>:     <span class="t-str">"Backend Developer"</span>,
   <span class="t-key">"focus"</span>:    <span class="t-arr">[</span><span class="t-str">"Java"</span>, <span class="t-str">"Spring Boot"</span>, <span class="t-str">"SQL"</span><span class="t-arr">]</span>,
   <span class="t-key">"learning"</span>: <span class="t-arr">[</span><span class="t-str">"Linux"</span>, <span class="t-str">"Docker"</span>, <span class="t-str">"Arquitectura de Software"</span>, <span class="t-str">"Sistemas Distribuidos"</span><span class="t-arr">]</span>,
-  <span class="t-key">"about"</span>:    <span class="t-str">"Disfruto diseñar APIs, modelar dominios de negocio</span>
-<span class="t-str">             y resolver problemas complejos mediante</span>
-<span class="t-str">             soluciones simples y mantenibles."</span>
+  <span class="t-key">"about"</span>:    <span class="t-str">"Soy desarrollador backend enfocado en Java y Spring Boot.
+               Actualmente desarrollo proyectos personales para profundizar mis conocimientos
+               en arquitectura de software y sistemas distribuidos.
+               Me interesa especialmente el desarrollo de aplicaciones escalables, el modelado de dominios
+               y la administración de sistemas Linux."</span>
 <span class="t-arr">}</span></pre>
         </div>
 
@@ -585,6 +793,150 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<section id="trayectoria">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-cmd">$</span>
+      <span class="section-title">trayectoria</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">./log --all</div>
+      <div style="padding:1.5rem 1.8rem;">
+        <div class="timeline">
+
+          <div class="tl-entry">
+            <div class="tl-year">
+              2024
+              <span class="tl-year-range">→ Cliente privado</span>
+            </div>
+            <div class="product-desc">
+              Sistema de gestión para tienda de ropa.
+            </div>
+            <ul class="tl-items">
+              <li>Gestión de Inventario y Productos</li>
+              <li>Módulo de Ventas y Facturación</li>
+              <li>Reportes y Estadísticas</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-cmd">$</span>
+      <span class="section-title">proyectos</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="project-card" style="margin-bottom:1rem;">
+      <div class="project-topbar">
+        <span class="project-id">proj_001 // pelota-yara</span>
+        <span>Java · Spring Boot · PostgreSQL</span>
+      </div>
+      <div class="project-body">
+        <div class="project-name">
+          <span class="glitch-wrap" data-text="Pelota Yara">Pelota Yara</span>
+        </div>
+        <p class="project-desc">
+          API Backend moderna construida con Spring Boot y arquitectura hexagonal para gestionar
+          partidos de fútbol en vivo, ligas, equipos y eventos en tiempo real.
+          Foro de fútbol paraguayo con vista de partidos en vivo, tabla de posiciones,
+          catálogo de equipos por competencia y resultados por fecha.
+        </p>
+        <div class="project-tags">
+          <span class="badge badge-green">Spring Boot</span>
+          <span class="badge badge-blue">Hexagonal Architecture</span>
+          <span class="badge badge-amber">PostgreSQL</span>
+          <span class="badge badge-dim">Docker</span>
+          <span class="badge badge-dim">REST API</span>
+          <span class="badge badge-red">Live Events</span>
+        </div>
+        <div class="project-links" style="margin-bottom:1.2rem;">
+          <a class="btn btn-primary" href="https://github.com/EstebanRojasss/pelota-yara" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            ver en github
+          </a>
+          <a class="btn btn-secondary" href="#" target="_blank" rel="noopener" title="link de demo — próximamente">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            ver demo (youtube)
+          </a>
+        </div>
+      </div>
+      
+      <div class="panel-header" style="border-radius:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">./stats</div>
+      <div class="stats-grid" style="border-radius:0 0 6px 6px;border:none;">
+        <div class="stat-cell">
+          <span class="stat-key">Arquitectura</span>
+          <span class="stat-val">Hexagonal</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-key">Lenguaje</span>
+          <span class="stat-val">Java 21</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-key">Endpoints REST</span>
+          <span class="stat-val">30+</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-key">Base de datos</span>
+          <span class="stat-val">PostgreSQL</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-key">Documentación</span>
+          <span class="stat-val">Swagger</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-key">Eventos</span>
+          <span class="stat-val">En vivo</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-key">Contenedor</span>
+          <span class="stat-val">Docker</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top:2.5rem;">
+      <span class="section-cmd">$</span>
+      <span class="section-title">próximos proyectos</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="future-grid">
+      <div class="future-card">
+        <div class="future-topbar">
+          <span class="future-id">proj_002 // bitwarden.app</span>
+          <span class="status-pill status-dev">IN DEVELOPMENT</span>
+        </div>
+        <div class="future-body">
+          <div class="future-name">Bitwarden App</div>
+          <p class="future-desc">Aplicación de escritorio para guardado y manejo de contraseñas.</p>
+        </div>
+      </div>
+
+      <div class="future-card">
+        <div class="future-topbar">
+          <span class="future-id">proj_003 // tools&amp;colors.app</span>
+          <span class="status-pill status-plan">PLANNING</span>
+        </div>
+        <div class="future-body">
+          <div class="future-name">Tools &amp; Colors</div>
+          <p class="future-desc">Web para la venta mayorista de herramientas y pinturas.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -644,53 +996,6 @@
   </div>
 </section>
 
-<section id="projects">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-cmd">$</span>
-      <span class="section-title">proyectos</span>
-      <div class="section-line"></div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-topbar">
-        <span class="project-id">proj_001 // pelota-yara</span>
-        <span>Java · Spring Boot · PostgreSQL</span>
-      </div>
-      <div class="project-body">
-        <div class="project-name">
-          <span class="glitch-wrap" data-text="Pelota Yara">Pelota Yara</span>
-        </div>
-        <p class="project-desc">
-          API Backend moderna construida con Spring Boot y arquitectura hexagonal para gestionar
-          partidos de fútbol en vivo, ligas, equipos y eventos en tiempo real.
-          Foro de fútbol paraguayo con vista de partidos en vivo, tabla de posiciones,
-          catálogo de equipos por competencia y resultados por fecha.
-        </p>
-        <div class="project-tags">
-          <span class="badge badge-green">Spring Boot</span>
-          <span class="badge badge-blue">Hexagonal Architecture</span>
-          <span class="badge badge-amber">PostgreSQL</span>
-          <span class="badge badge-dim">Docker</span>
-          <span class="badge badge-dim">REST API</span>
-          <span class="badge badge-red">Live Events</span>
-        </div>
-        <div class="project-links">
-          <a class="btn btn-primary" href="https://github.com/EstebanRojasss/pelota-yara" target="_blank" rel="noopener">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            ver en github
-          </a>
-          <a class="btn btn-secondary" href="#" target="_blank" rel="noopener" title="link de demo — próximamente">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            ver demo (youtube)
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
 <section id="contact">
   <div class="container">
     <div class="section-header">
@@ -700,6 +1005,7 @@
     </div>
 
     <div class="contact-grid">
+
       <div class="panel" style="height:fit-content;">
         <div class="panel-header">./links &amp; redes</div>
         <div style="padding:1rem 1.2rem;">
@@ -710,16 +1016,22 @@
             </div>
             <div class="contact-row">
               <span class="contact-label">email</span>
-              <a class="contact-val" href="mailto:tu@email.com">estebanrojasch.2@gmail.com</a>
+              <a class="contact-val" href="mailto:estebanrojasch.2@gmail.com">estebanrojasch.2@gmail.com</a>
             </div>
             <div class="contact-row">
               <span class="contact-label">linkedin</span>
-              <a class="contact-val" href="#" target="_blank">https://www.linkedin.com/in/esteban-rojas-ch</a>
+              <a class="contact-val" href="https://www.linkedin.com/in/esteban-rojas-ch" target="_blank">linkedin.com/in/esteban-rojas-ch</a>
             </div>
             <div class="contact-row">
               <span class="contact-label">idiomas</span>
               <span class="contact-val-plain">Español · Inglés</span>
             </div>
+          </div>
+          <div class="cv-row">
+            <a class="btn btn-cv" href="https://drive.google.com/file/d/1fdTY33BDIwhOijCKaliItzuICz47KyuH/view?usp=sharing" target = "_blank" download>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              descargar cv
+            </a>
           </div>
         </div>
       </div>
@@ -761,7 +1073,7 @@
 
 <footer>
   <div class="container" style="display:flex;justify-content:space-between;width:100%;align-items:center;">
-    <span>esteban rojas © 2026</span>
+    <span>esteban rojas © 2026 </span>
     <span class="footer-right">backend developer</span>
   </div>
 </footer>
@@ -780,8 +1092,8 @@
     msgOk.style.display = 'none';
     msgErr.style.display = 'none';
 
-    try {
-      const res = await fetch('https://formspree.io/f/mykvrypy', {
+    try {      const res = await fetch('https://formspree.io/f/mykvrypy', {
+
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: new FormData(form)
@@ -804,7 +1116,6 @@
     }
   }
 
-  /* typing effect on load */
   window.addEventListener('DOMContentLoaded', () => {
     const cmds = document.querySelectorAll('.t-cmd');
     cmds.forEach((el, i) => {
